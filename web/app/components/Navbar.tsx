@@ -1,7 +1,7 @@
 // File path: src/components/Navbar.js
 import { Link, NavLink } from "react-router-dom";
 import { Fragment, useState, useEffect } from "react";
-import { Popover, Transition, PopoverButton, PopoverPanel, PopoverGroup} from "@headlessui/react";
+import { Popover, Transition, PopoverButton, PopoverPanel, PopoverGroup } from "@headlessui/react";
 import InfoPopover from "./InforPopover";
 
 const solutions = [
@@ -21,7 +21,7 @@ export default function Example() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const activeClassName = "text-accent p-1 border-b-2 border-accent text-sm";
+  const activeClassName = "text-text p-1 border-b-2 border-accent text-sm";
 
   return (
     <div>
@@ -52,17 +52,35 @@ export default function Example() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 ">
-            <img
-              alt="home"
-              src="https://res.cloudinary.com/dlw9hjlzv/image/upload/v1713958088/AFFABLE/Group_670_1_burzn0.png"
-              className="h-7 w-7"
-            />
-            <p
-              className="text-xl lg:text-3xl relative font-extrabold "
-              style={{ fontFamily: "Space Grotesk" }}
-            >
-              ExpertForms
-            </p>
+
+
+
+            <section className="flex flex-row items-center gap-2">
+
+              <div className="h-10 w-auto">
+                <img
+                  src="/logo-light.png"
+                  alt="Remix"
+                  className="block h-10 w-auto dark:hidden"
+                />
+                <img
+                  src="/logo-dark.png"
+                  alt="Remix"
+                  className="hidden h-10 w-auto dark:block"
+                />
+              </div>
+
+              <p
+                className="text-xl lg:text-3xl relative font-extrabold "
+                style={{ fontFamily: "Space Grotesk" }}
+              >
+                ExpertForms
+              </p>
+
+            </section>
+
+
+
           </Link>
 
           {/* Desktop Navigation */}

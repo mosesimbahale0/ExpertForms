@@ -44,14 +44,13 @@ const config: Config = {
   plugins: [
     plugin(({ addBase }) => {
       addBase({
-        // Light mode (default)
         ":root": {
           "--success-color": "#01B331", // green-500
           "--error-color": "#DB0C00", // red-500
           "--warning-color": "#FAFF00", // yellow-500
           "--info-color": "#FF7700", // blue-500
-          "--accent-color": "#464FEB", // indigo-500
-          "--complementary-color": "#435AF6", // indigo-600
+          "--accent-color": "#21C161", // indigo-500
+          "--complementary-color": "#00FF66", // indigo-600
           "--active-color": "#5E72FB", // indigo-650
           "--primary-color": "#F9F9F9", // blue-500
           "--secondary-color": "#FBFBFB", // green-500
@@ -70,8 +69,8 @@ const config: Config = {
           "--error-color": "#EF4444",
           "--warning-color": "#F59E0B",
           "--info-color": "#3B82F6",
-          "--accent-color": "#464FEB",
-          "--complementary-color": "#435AF6",
+          "--accent-color": "#1DA855",
+          "--complementary-color": "#105B2E",
           "--active-color": "#5E72FB",
           "--primary-color": "#131316",
           "--secondary-color": "#212126",
@@ -79,8 +78,8 @@ const config: Config = {
           "--quaternary-color": "#343438",
           "--background-color": "#000000", // dark background color
           "--text1-color": "#FFFFFF",
-          "--text2-color": "#6B7280",
-          "--text3-color": "#9CA3AF",
+          "--text2-color": " #9CA3AF",
+          "--text3-color":  "#6B7280",
           "--transparent-color": "rgba(0,0,0,0.5) ",
         },
       });
