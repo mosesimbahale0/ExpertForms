@@ -88,7 +88,7 @@ We welcome contributions to improve and expand **ExpertForms**. Here are some wa
 - **Testing**: Write and improve test cases to ensure system reliability.
 - **Tools**: Create additional utilities to extend the system's functionality.
 - **Examples**: Share real-world use cases and implementation examples.
-- **Design**: Refine the user interface or suggest architectural improvements. Link to Design -[figma](https://github.com/mosesimbahale0/ExpertForms/discussions)
+- **Design**: Refine the user interface or suggest architectural improvements. Link to Design -[figma]([https://github.com/mosesimbahale0/ExpertForms/discussions](https://www.figma.com/design/xoLuBDoiVpvwwQbLbe9iv2/ExpertForms?node-id=0-1&t=csHT4KwM4e2JvjS8-1))
 
 
 ### Contribution Process
