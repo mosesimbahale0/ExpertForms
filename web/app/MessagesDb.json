@@ -1,0 +1,26 @@
+{
+  "messages": [
+    {
+      "id": "1",
+      "sender": "User1",
+      "timestamp": "2024-07-26T10:00:00Z",
+      "text": "Hello",
+      "replies": []
+    },
+    {
+      "id": "2",
+      "sender": "Expert",
+      "timestamp": "2024-07-26T10:01:00Z",
+      "text": "Hi there!",
+      "replies": []
+    }
+,
+    {
+      "id": "3",
+      "sender": "User1",
+      "timestamp": "2024-07-26T10:02:00Z",
+      "text": "How are you?",
+      "replies": []
+    }
+  ]
+}
