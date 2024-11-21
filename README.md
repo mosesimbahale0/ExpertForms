@@ -2,16 +2,13 @@
 
 ## Introduction
 
-**ExpertForms** A form plugin that implements a proactive content moderation system, inspired by the principles of expert systems. By leveraging **Web AI** and rule-based decision-making, it identifies and addresses inappropriate or harmful content in real time. The project aims to reduce reliance on manual moderation while ensuring ethical, scalable, and efficient solutions.
+**ExpertForms** is a form plugin that implements a proactive content moderation system, inspired by expert systems. By leveraging **Web AI** and rule-based decision-making, it identifies and addresses inappropriate or harmful content in real time. This project aims to reduce reliance on manual moderation while ensuring ethical, scalable, and efficient solutions.
 
-- We adress the moderation at the source (Forms)
+- We address moderation at the source: forms.
 
-This system combines customizable rules and Web AI to tackle real-world challenges in content moderation across a wide range of platforms.
+This system combines customizable rules and Web AI to tackle real-world challenges in content moderation across various platforms.
 
-Read more here
-[White Paper](https://1drv.ms/w/c/cc19bae930a8cf43/EVcmwWpJUPpLth40f5enth8BCkXSC6kpnpWmWDdHvZ3VWQ)
-
-
+Read more in the [White Paper](https://1drv.ms/w/c/cc19bae930a8cf43/EVcmwWpJUPpLth40f5enth8BCkXSC6kpnpWmWDdHvZ3VWQ).
 
 ---
 
