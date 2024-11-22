@@ -22,7 +22,7 @@
 <details>
   <summary><a id="introduction"></a>Introduction</summary>
   
-  **ExpertForms** is a content moderation system that implements a proactive content moderation system, inspired by expert systems. By leveraging **Web AI** and rule-based decision-making, it identifies and addresses inappropriate or harmful content in real time. This project aims to reduce reliance on manual moderation while ensuring ethical, scalable, and efficient solutions.
+  **ExpertForms** is a content moderation system that implements a proactive content moderation, inspired by expert systems. By leveraging **Web AI** and rule-based decision-making, it identifies and addresses inappropriate or harmful content in real time. This project aims to reduce reliance on manual moderation while ensuring ethical, scalable, and efficient solutions.
   
   - We address moderation at the source: forms.
   
