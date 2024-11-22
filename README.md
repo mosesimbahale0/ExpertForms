@@ -76,7 +76,7 @@ expertforms/
 ---
 
 <details>
-  <summary>  <a id="installation"></a> Installation</summary>
+  <summary>  <a id="installation"></a>Showcase App Installation</summary>
 
 ## Prerequisites
 
