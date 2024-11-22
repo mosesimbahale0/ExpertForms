@@ -8,11 +8,11 @@ import {
 import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
 
-import Navbar from "~/components/Navbar";
-import Footer from "~/components/Footer";
+import Navbar from "~/components/common/Navbar";
+import Footer from "~/components/common/Footer";
 
 
-import Theme from "./components/Theme";
+import Theme from "./components/theme/Theme";
 
 
 

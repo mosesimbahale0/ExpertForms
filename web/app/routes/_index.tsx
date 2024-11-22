@@ -27,10 +27,7 @@ export default function Index() {
 
                 <p className=" text-sm text-left text-text2">
                   Expert Forms: Build powerful content moderation systems with ease.
-
                 </p>
-
-
 
 
                 <p
@@ -51,14 +48,12 @@ export default function Index() {
 
 
               </div>
-
               <div className="flex lg:flex-row flex-col gap-10 ">
                 <Link
                   to="/flex"
                   className=" bg-accent hover:bg-complementary px-10 py-4 rounded-full text-text group inline-flex"
                 >
                   Give it a try
-
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="ml-4 h-6 w-6 transition-transform group-hover:translate-x-2"

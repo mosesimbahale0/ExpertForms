@@ -8,7 +8,7 @@ export const meta: MetaFunction = () => {
 };
 
 
-export default function examples() {
+export default function singlePost() {
   return (
     <>
       <section className="bg-primary text-text" >
@@ -19,7 +19,7 @@ export default function examples() {
           </div>
 
           <div className="flex flex-col gap-6 text-accent text-left justify-center items-center" >
-            <p className="text-3xl font-medium text-center text-text3 ">Coming Soon ...</p>
+            <p className="text-3xl font-medium text-center text-text3 ">One Post</p>
             <p className=" text-center text-text3 ">Like to contribute? Visit our github page</p>
 
             <a

@@ -11,7 +11,7 @@ function ThemeToggle() {
       checked={theme === "dark"}
       onChange={toggleTheme}
       className={`relative inline-flex items-center h-10 rounded-full w-16 transition-colors ease-in-out duration-200 ${
-        theme === "dark" ? "bg-black shadow-inner" : "bg-white shadow-inner"
+        theme === "dark" ? "bg-secondary shadow-inner shadow-black" : "bg-white shadow-inner"
       }`}
     >
       <span

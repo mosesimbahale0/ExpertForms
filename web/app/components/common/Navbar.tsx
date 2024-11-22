@@ -31,7 +31,7 @@ export default function Example() {
           : "shadow-none"
           }`}
       >
-        <div className="container mx-auto flex flex-row justify-between items-center px-4">
+        <div className="container mx-auto flex flex-row justify-between items-center px-4 lg:px-0">
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
             <PopoverButton className="rounded-lg bg-accent p-2 text-text hover:bg-primary hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent">
@@ -100,24 +100,7 @@ export default function Example() {
             ))}
           </PopoverGroup>
 
-          {/* User Account Button */}
           <div className="flex items-center gap-4">
-            <Link
-              to="/account"
-              className="lg:hidden bg-accent p-2 rounded-lg text-white hover:bg-primary hover:text-black"
-            >
-              {/* Inline SVG for Account Icon */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="2em"
-                height="2em"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-6 w-6"
-              >
-                <path d="M12 2a10 10 0 0 0 0 20a10 10 0 0 0 0-20Zm0 2a3 3 0 0 1 3 3a3 3 0 0 1-3 3a3 3 0 0 1-3-3a3 3 0 0 1 3-3Zm0 16a8 8 0 0 1-6.2-2.9a5 5 0 0 1 12.4 0A8 8 0 0 1 12 20Z" />
-              </svg>
-            </Link>
             <div className="hidden lg:block">
               <InfoPopover />
             </div>
@@ -137,26 +120,35 @@ export default function Example() {
           <PopoverPanel className="absolute inset-x-0 top-0 p-4 bg-primary shadow-lg lg:hidden">
             <div className="flex items-center justify-between">
               <Link to="/" className="flex items-center gap-2">
-                <img
-                  alt="home"
-                  src="https://res.cloudinary.com/dlw9hjlzv/image/upload/v1713958088/AFFABLE/Group_670_1_burzn0.png"
-                  className="h-7 w-7"
-                />
-                <p className="text-xl font-bold">ExpertForms</p>
+                <section className="flex flex-row items-center gap-2">
+
+                  <div className="h-10 w-auto">
+                    <img
+                      src="/logo-light.png"
+                      alt="Remix"
+                      className="block h-10 w-auto dark:hidden"
+                    />
+                    <img
+                      src="/logo-dark.png"
+                      alt="Remix"
+                      className="hidden h-10 w-auto dark:block"
+                    />
+                  </div>
+
+                  <p
+                    className="text-xl lg:text-3xl relative font-extrabold "
+                    style={{ fontFamily: "Space Grotesk" }}
+                  >
+                    ExpertForms
+                  </p>
+
+                </section>
+
               </Link>
-              <PopoverButton className="bg-accent p-2 rounded-lg text-white hover:bg-primary hover:text-black">
+              <PopoverButton className="bg-accent p-2 rounded-lg text-white hover:bg-primary hover:text-accent">
                 <span className="sr-only">Close menu</span>
                 {/* Inline SVG for Close Icon */}
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="h-5 w-5"
-                >
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
+                x
               </PopoverButton>
             </div>
             <div className="mt-4">
