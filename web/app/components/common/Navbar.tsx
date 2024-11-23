@@ -5,7 +5,7 @@ import { Popover, Transition, PopoverButton, PopoverPanel, PopoverGroup } from "
 import InfoPopover from "./InforPopover";
 
 const solutions = [
-  { name: "Show Case", description: "Our pricing plans.", href: "/flex" },
+  { name: "Showcase", description: "Our pricing plans.", href: "/flex" },
   { name: "Docs", description: "Learn about us.", href: "/docs" },
   { name: "Examples", description: "Our pricing plans.", href: "/examples" },
 ];
@@ -56,7 +56,6 @@ export default function Example() {
 
 
             <section className="flex flex-row items-center gap-2">
-
               <div className="h-10 w-auto">
                 <img
                   src="/logo-light.png"
@@ -76,7 +75,6 @@ export default function Example() {
               >
                 ExpertForms
               </p>
-
             </section>
 
 

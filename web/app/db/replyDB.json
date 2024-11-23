@@ -1,0 +1,19 @@
+{
+    "replies": [
+      {
+        "id": 1,
+        "messageId": "1",
+        "sender": "Expert",
+        "timestamp": "2024-07-26T10:00:30Z",
+        "text": "I am doing well, thank you!"
+      },
+      {
+        "id": 2,
+        "messageId": "1",
+        "sender": "Expert",
+        "timestamp": "2024-07-26T10:01:00Z",
+        "text": "Let me know if you have more questions."
+      }
+    ]
+  }
+  
