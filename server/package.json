@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "tsc-watch --onSuccess 'node ./dist/index.js'",
-    "build": "npm run compile && npm run bundle",
-    "bundle": "npx terser ./public/input.js -c -o ./public/output.min.js",
+    "dev:server": "concurrently \"npm run dev\" \"nodemon ./dist/index.js\"",
+    "build": "rimraf ./dist && tsc",
+    "lint": "eslint src --ext .ts",
     "compile": "tsc",
-    "start": "NODE_ENV=production npm run compile && node ./dist/index.js",
-    "serve": "nodemon --watch ./src --exec 'npm start'"
+    "start": "npm run compile && node ./dist/index.js"
   },
   "keywords": [],
   "author": "MI",
@@ -25,7 +25,7 @@
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
     "mongoose": "^8.4.1",
-    "morgan": "^1.10.0"
+    "nodemon": "^3.1.7"
   },
   "devDependencies": {
     "@types/node": "^20.13.0",
@@ -35,7 +35,6 @@
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
-    "nodemon": "^3.1.2",
     "prettier": "^3.0.0",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.4.5"
