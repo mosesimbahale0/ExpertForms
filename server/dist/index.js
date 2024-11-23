@@ -6,8 +6,7 @@ import { createServer } from "http";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import bodyParser from "body-parser";
 import cors from "cors";
-import mongoose from "mongoose";
-import colors from "colors";
+import mongoose from 'mongoose';
 import dotenv from "dotenv";
 dotenv.config();
 import path from "path";
@@ -217,29 +216,33 @@ const resolvers = {
 };
 // // mongoDB
 // //----------------------------------------------------------------//
-// const mongoUrl = process.env.MONGODB_URI;
-// async function connectToDb() {
-//   try {
-//     await mongoose.connect(mongoUrl);
-//     console.log(colors.bgMagenta("🍃 Connected to MongoDB Atlas successfully"));
-//   } catch (error) {
-//     console.error("Error connecting to MongoDB Atlas:", error);
-//     process.exit(1); // Exit process on connection error
-//   }
-// }
-// connectToDb();
+async function connectToDb() {
+    try {
+        const mongoUri = process.env.MONGODB_URI;
+        await mongoose.connect(mongoUri, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        console.log('🍃 Connected to MongoDB Atlas successfully');
+    }
+    catch (error) {
+        console.error('Error connecting to MongoDB Atlas:', error.message);
+        process.exit(1);
+    }
+}
+connectToDb();
 //----------------------------------------------------------------//
-const localMongoUrl = process.env.MONGODB_LOCAL_URI;
-mongoose.connect(localMongoUrl);
-const db = mongoose.connection;
-db.on("error", (err) => {
-    console.error("Error connecting to MongoDB:", err);
-    process.exit(1);
-});
-db.once("open", () => {
-    console.log(colors.bgMagenta("🍃 Connected to MongoDB LOCAL successfully"));
-});
-process.on("warning", (e) => console.warn(e.stack));
+// const localMongoUrl = process.env.MONGODB_LOCAL_URI;
+// mongoose.connect(localMongoUrl);
+// const db = mongoose.connection;
+// db.on("error", (err) => {
+//   console.error("Error connecting to MongoDB:", err);
+//   process.exit(1);
+// });
+// db.once("open", () => {
+//   console.log(colors.bgMagenta("🍃 Connected to MongoDB LOCAL successfully"));
+// });
+// process.on("warning", (e) => console.warn(e.stack));
 const PORT = process.env.PORT || 4000;
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
