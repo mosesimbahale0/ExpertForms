@@ -6,13 +6,12 @@ import { createServer } from "http";
 import { makeExecutableSchema } from "@graphql-tools/schema";
 import bodyParser from "body-parser";
 import cors from "cors";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 import path from "path";
 import fs from "fs/promises";
 import { fileURLToPath } from "url";
-import { ObjectId } from "mongodb";
 import { Schema, model } from "mongoose";
 // //  import typeDefs and resolvers
 // import typeDefs  from "./typeDefs";
@@ -49,7 +48,6 @@ const User = model("User", userSchema);
 const Post = model("Post", postSchema);
 const Comment = model("Comment", commentSchema);
 const typeDefs = `#graphql
-
 # GraphQL Schema
 type User {
   id: ID! # MongoDB ObjectId as the unique identifier
@@ -196,7 +194,7 @@ const resolvers = {
         async addReply(_, { commentId, messageId, sender, text }) {
             try {
                 const reply = {
-                    id: new ObjectId(),
+                    id: 11,
                     messageId,
                     sender,
                     timestamp: new Date().toISOString(),
@@ -214,6 +212,24 @@ const resolvers = {
         },
     },
 };
+// const uri =
+//   "mongodb+srv://mosesimbahale0:NewDawn@2025@cluster0.zx9ga.mongodb.net/ExpertForms?retryWrites=true&w=majority&appName=Cluster0";
+// import pkg from "mongodb";
+// const { MongoClient } = pkg;
+// const client = new MongoClient(uri);
+// async function main() {
+//   try {
+//     await client.connect();
+//     console.log("Connected successfully to server");
+//     const db = client.db("myProject");
+//     const collection = db.collection("documents");
+//   } catch (err) {
+//     console.error(err.stack);
+//   } finally {
+//     await client.close();
+//   }
+// }
+// main().catch(console.dir);
 // // mongoDB
 // //----------------------------------------------------------------//
 async function connectToDb() {

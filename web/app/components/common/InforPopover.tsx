@@ -40,7 +40,7 @@ export default function InfoPopover() {
                             leaveTo="opacity-0 translate-y-1"
                         >
                             <PopoverPanel className="absolute left-1/2 z-10 w-80 -translate-x-3/4 transform sm:px-0 lg:max-w-3xl flex flex-col gap-2 p-2">
-                                <div className=" drop-shadow-2xl drop-shadow-black ring-1 ring-secondary bg-primary   flex flex-col divide-y divide-secondary rounded-xl overflow-hidden">
+                                <div className=" drop-shadow-2xl drop-shadow-black ring-1 ring-secondary bg-primary   flex flex-col divide-y divide-secondary overflow-hidden">
                                     <div className="relative flex flex-col gap-4  justify-center items-center bg-primary h-64 p-8">
                                         <p className="text-2xl  font-medium">Contribution</p>
                                         <p className="text-xs text-text2">
