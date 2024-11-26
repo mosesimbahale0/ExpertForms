@@ -5,8 +5,6 @@ import com.experforms.generator.service.PostService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-
-//@CrossOrigin(origins = ["*"]) // Allow * origins
 @RestController
 @RequestMapping("/api/posts")
 class PostController(private val postService: PostService) {
