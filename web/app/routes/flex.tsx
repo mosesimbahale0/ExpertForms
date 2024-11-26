@@ -36,7 +36,7 @@ export default function flex() {
   const posts = useLoaderData<Post[]>();
 
   if (!posts) {
-    return <p>Loading posts...  Thank you for your patience! The Showcase service is hosted on a free instance and might take up to a minute to start if it has been inactive. We apologize for any inconvenience caused. </p>;
+    return <p>Loading posts...  </p>;
   }
 
 

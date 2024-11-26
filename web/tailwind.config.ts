@@ -67,7 +67,7 @@ const config: Config = {
         ".dark": {
           "--success-color": "#10B981",
           "--error-color": "#EF4444",
-          "--warning-color": "#FF6F00", // yellow-500
+          "--warning-color": "#E65100", // yellow-500
           "--info-color": "#3B82F6",
           "--accent-color": "#1DA855",
           "--complementary-color": "#105B2E",

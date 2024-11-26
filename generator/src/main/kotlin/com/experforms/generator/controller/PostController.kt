@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 
-@CrossOrigin(origins = ["http://localhost:5173"]) // Allow requests from localhost:5173
+@CrossOrigin(origins = ["*"]) // Allow * origins
 @RestController
 @RequestMapping("/api/posts")
 class PostController(private val postService: PostService) {
