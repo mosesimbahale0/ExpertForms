@@ -5,7 +5,7 @@ import com.experforms.generator.service.UserService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
-@CrossOrigin(origins = ["*"]) // Allow * origins
+//@CrossOrigin(origins = ["*"]) // Allow * origins
 @RestController
 @RequestMapping("/api/users")
 class UserController(private val userService: UserService) {

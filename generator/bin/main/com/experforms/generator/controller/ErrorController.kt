@@ -3,9 +3,10 @@ package com.experforms.generator.controller
 import jakarta.servlet.http.HttpServletRequest
 import org.springframework.boot.web.servlet.error.ErrorController
 import org.springframework.stereotype.Controller
+import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.RequestMapping
 
-
+//@CrossOrigin(origins = ["*"]) // Allow * origins
 @Controller
 class CustomErrorController : ErrorController {
 
