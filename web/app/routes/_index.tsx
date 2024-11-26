@@ -203,8 +203,6 @@ export default function Index() {
               />
             </div>
           </div>
-
-
         </section>
 
         <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto ">

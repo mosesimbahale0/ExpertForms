@@ -7,14 +7,14 @@ import {
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 import "./tailwind.css";
+import { useEffect, useState } from "react";
 
 import Navbar from "~/components/common/Navbar";
 import Footer from "~/components/common/Footer";
-
+import LoadingIndicator from "./components/errors/LoadingIndicator";
+import ErrorBoundary from "./components/errors/ErrorBoundary";
 
 import Theme from "./components/theme/Theme";
-
-
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -30,6 +30,12 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const [hydrated, setHydrated] = useState(false);
+
+  useEffect(() => {
+    setHydrated(true);
+  }, []);
+
   return (
     <html lang="en">
       <head>
@@ -56,13 +62,20 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Theme>
-          <>
-            <Navbar />
-            {children}
-            <Footer />
-          </>
+          <ErrorBoundary>
+            <LoadingIndicator />
+            {/* Render content only after hydration */}
+            {hydrated ? (
+              <>
+                <Navbar />
+                <main>
+                  <Outlet />
+                </main>
+                <Footer />
+              </>
+            ) : null}
+          </ErrorBoundary>
         </Theme>
-
         <ScrollRestoration />
         <Scripts />
       </body>

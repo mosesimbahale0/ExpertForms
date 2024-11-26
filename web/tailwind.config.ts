@@ -47,7 +47,7 @@ const config: Config = {
         ":root": {
           "--success-color": "#01B331", // green-500
           "--error-color": "#DB0C00", // red-500
-          "--warning-color": "#FAFF00", // yellow-500
+          "--warning-color": "#FFA000", // yellow-500
           "--info-color": "#FF7700", // blue-500
           "--accent-color": "#21C161", // indigo-500
           "--complementary-color": "#00FF66", // indigo-600
@@ -67,7 +67,7 @@ const config: Config = {
         ".dark": {
           "--success-color": "#10B981",
           "--error-color": "#EF4444",
-          "--warning-color": "#F59E0B",
+          "--warning-color": "#FF6F00", // yellow-500
           "--info-color": "#3B82F6",
           "--accent-color": "#1DA855",
           "--complementary-color": "#105B2E",

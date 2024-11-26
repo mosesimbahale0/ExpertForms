@@ -14,19 +14,16 @@
   "keywords": [],
   "author": "MI",
   "license": "ISC",
-  "description": "ExpertForms Service",
+  "description": "ExpertForms NodeJS Microish-Service",
   "dependencies": {
     "@apollo/server": "^4.10.4",
     "@graphql-tools/schema": "^10.0.4",
-    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "graphql": "^16.8.1",
     "graphql-tag": "^2.12.6",
-    "mongodb": "^3.5.9",
-    "mongoose": "^8.4.1",
-    "nodemon": "^3.1.7"
+    "mongoose": "^8.4.1"
   },
   "devDependencies": {
     "@types/node": "^20.13.0",
@@ -36,6 +33,7 @@
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.1.7",
     "prettier": "^3.0.0",
     "tsc-watch": "^6.2.0",
     "typescript": "^5.4.5"

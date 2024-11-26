@@ -7,7 +7,6 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose, { ConnectOptions } from "mongoose";
-import colors from "colors";
 import dotenv from "dotenv";
 dotenv.config();
 import path from "path";
@@ -227,38 +226,21 @@ const resolvers = {
   },
 };
 
-// const uri =
-//   "mongodb+srv://mosesimbahale0:NewDawn@2025@cluster0.zx9ga.mongodb.net/ExpertForms?retryWrites=true&w=majority&appName=Cluster0";
-
-// import pkg from "mongodb";
-// const { MongoClient } = pkg;
-// const client = new MongoClient(uri);
-// async function main() {
-//   try {
-//     await client.connect();
-//     console.log("Connected successfully to server");
-//     const db = client.db("myProject");
-//     const collection = db.collection("documents");
-//   } catch (err) {
-//     console.error(err.stack);
-//   } finally {
-//     await client.close();
-//   }
-// }
-// main().catch(console.dir);
-
 // // mongoDB
 // //----------------------------------------------------------------//
 async function connectToDb() {
   try {
     const mongoUri = process.env.MONGODB_URI;
-    await mongoose.connect(mongoUri as string, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    } as ConnectOptions);
-    console.log('🍃 Connected to MongoDB Atlas successfully');
+    await mongoose.connect(
+      mongoUri as string,
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+      } as ConnectOptions
+    );
+    console.log("🍃 Connected to MongoDB Atlas successfully");
   } catch (error) {
-    console.error('Error connecting to MongoDB Atlas:', error.message);
+    console.error("Error connecting to MongoDB Atlas:", error.message);
     process.exit(1);
   }
 }
@@ -281,13 +263,12 @@ const PORT = process.env.PORT || 4000;
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 
-// CORS setup
 app.use(
   cors({
     origin: "*", // Allows all origins
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Add any other methods you need
-    allowedHeaders: ["Content-Type", "Authorization"], // Add any other headers you need
-    credentials: true, // If you need to allow cookies or authentication headers
+    methods: ["GET", "POST"], // Most GraphQL servers only need these
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Use true if authentication is required
   })
 );
 

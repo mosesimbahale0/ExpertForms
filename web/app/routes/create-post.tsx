@@ -1,89 +1,186 @@
-import { json, LoaderFunction, ActionFunction } from '@remix-run/node';
-import { useActionData, redirect } from '@remix-run/react';
-import fs from 'fs';
-import path from 'path';
+import { json, redirect } from '@remix-run/node';
+import { useActionData, Form, useNavigation } from '@remix-run/react';
+import { useEffect, useState } from 'react';
 
 // Define the Post type
 interface Post {
-  post_id: number;
-  user_id: number;
+  post_id?: number;
+  user_id: string; // Matches backend model
   title: string;
   content: string;
   cover_image: string;
-  created_at: string;
+  created_at?: string;
 }
 
-const getPostsFromJson = () => {
-  const currentDir = path.dirname(new URL(import.meta.url).pathname); 
-  const filePath = path.join(currentDir, '../db/postDB.json'); 
-  const fileData = fs.readFileSync(filePath, 'utf-8');
-  return JSON.parse(fileData) as Post[];
+// Helper to get a random image
+const getRandomImage = (): string => {
+  const randomIndex = Math.floor(Math.random() * 10) + 1;
+  console.log(`[LOG] Selected random image index: ${randomIndex}`);
+  return `/images/${randomIndex}.jpeg`; // Adjust the path if images are stored elsewhere
 };
 
-// Loader: Optional, might be used to pre-load data
-export const loader: LoaderFunction = async () => {
-  return null; 
-};
+// Server-side Action to handle form submission
+export const action = async ({ request }: { request: Request }) => {
+  try {
+    console.log(`[LOG] Received POST request`);
+    const formData = new URLSearchParams(await request.text());
+    const title = formData.get('title');
+    const content = formData.get('content');
+    const userId = formData.get('userId');
+    const coverImage = formData.get('coverImage');
 
-// Action: Handles the form submission to create a new post
-export const action: ActionFunction = async ({ request }) => {
-  const formData = new URLSearchParams(await request.text());
-  const title = formData.get('title');
-  const content = formData.get('content');
-  const cover_image = formData.get('cover_image') || 'https://via.placeholder.com/150'; // Default image
+    console.log(`[LOG] Extracted form data:`, { title, content, userId, coverImage });
 
-  if (!title || !content) {
-    return json({ error: 'Title and Content are required.' }, { status: 400 });
+    if (!title || !content || !userId || !coverImage) {
+      console.error(`[ERROR] Missing required fields`);
+      return json({ error: 'All fields are required.' }, { status: 400 });
+    }
+
+    const postData = {
+      userId,
+      title,
+      content,
+      coverImage,
+    };
+
+    console.log(`[LOG] Sending POST request to backend with data:`, postData);
+
+    const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
+    // const postResponse = await fetch('http://localhost:9000/api/posts', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(postData),
+    });
+
+    if (!postResponse.ok) {
+      const errorText = await postResponse.text();
+      console.error(`[ERROR] Backend responded with status ${postResponse.status}:`, errorText);
+      throw new Error('Failed to create post.');
+    }
+
+    console.log(`[LOG] Post created successfully`);
+    return redirect('/flex');
+  } catch (error: any) {
+    console.error(`[ERROR] Action handler encountered an error:`, error.message);
+    return json({ error: error.message || 'An unknown error occurred.' }, { status: 500 });
   }
-
-  const posts = getPostsFromJson();
-
-  // Create new post
-  const newPost: Post = {
-    post_id: posts.length + 1, // Simple ID logic (this should be unique in real applications)
-    user_id: 1, // For simplicity, we're using a static user ID
-    title,
-    content,
-    cover_image,
-    created_at: new Date().toISOString(),
-  };
-
-  // Save to the file (append the new post)
-  posts.push(newPost);
-  
-  // Correctly use path with import.meta.url for file write
-  const currentDir = path.dirname(new URL(import.meta.url).pathname);
-  const filePath = path.join(currentDir, '../db/posts.json');
-  fs.writeFileSync(filePath, JSON.stringify(posts, null, 2));
-
-  return redirect('/posts'); // Redirect to the home page or another desired page after submission
 };
 
-// Create Post Form Component
 export default function CreatePost() {
   const actionData = useActionData();
-  
+  const navigation = useNavigation();
+  const [coolName, setCoolName] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [coverImage, setCoverImage] = useState<string>('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    console.log(`[LOG] Component mounted`);
+
+    const fetchUserDetails = async () => {
+      const storedUserId = window.localStorage.getItem('userId');
+      const storedName = window.localStorage.getItem('coolName');
+
+      if (storedUserId && storedName) {
+        console.log(`[LOG] Found existing data in localStorage:`, { storedUserId, storedName });
+        setUserId(storedUserId);
+        setCoolName(storedName);
+      } else {
+        console.log(`[LOG] Fetching new cool name`);
+        try {
+          const response = await fetch('https://expertformsspringservice.onrender.com/api/cool-names/generate', { method: 'POST' });
+          // const response = await fetch('http://localhost:9000/api/cool-names/generate', { method: 'POST' });
+          if (!response.ok) {
+            throw new Error(`Failed to fetch cool name. Status: ${response.status}`);
+          }
+          const data = await response.json();
+          const { id, name } = data;
+          console.log(`[LOG] Received cool name:`, { id, name });
+
+          window.localStorage.setItem('userId', id);
+          window.localStorage.setItem('coolName', name);
+          setUserId(id);
+          setCoolName(name);
+        } catch (error) {
+          console.error(`[ERROR] Error fetching cool name:`, error);
+        }
+      }
+
+      // Set a random cover image
+      setCoverImage(getRandomImage());
+      setIsLoading(false);
+    };
+
+    fetchUserDetails();
+  }, []);
+
+
+
+
+  const isSubmitting = navigation.state === 'submitting';
+
   return (
-    <div className='min-h-screen py-24 container mx-auto'>
-      <h1>Create a New Post</h1>
-      <form method="post">
-        <div>
-          <label htmlFor="title">Title</label>
-          <input type="text" name="title" id="title" required />
-        </div>
-        <div>
-          <label htmlFor="content">Content</label>
-          <textarea name="content" id="content" required></textarea>
-        </div>
-        <div>
-          <label htmlFor="cover_image">Cover Image URL (Optional)</label>
-          <input type="text" name="cover_image" id="cover_image" />
-        </div>
-        {actionData?.error && <div style={{ color: 'red' }}>{actionData.error}</div>}
-        <div>
-          <button type="submit">Create Post</button>
-        </div>
-      </form>
-    </div>
+
+    <section className='bg-primary'>
+      <div className="min-h-screen py-24 container mx-auto ">
+        {isLoading ? (
+          <div className="text-center">
+            <p className="text-lg">Just a moment as we load your anonymous profile...</p>
+          </div>
+        ) : (
+          <>
+            <div className="min-h-screen  container mx-auto">
+              <h1 className="text-3xl font-bold mb-4">Create a New Post</h1>
+              {coolName && (
+                <div className="mb-4">
+                  <p className="text-lg">
+                    Welcome, <strong>{coolName}</strong>!
+                  </p>
+                </div>
+              )}
+
+              <Form method="post" className="" >
+                <input type="hidden" name="userId" value={userId || ''} />
+                <input type="hidden" name="coverImage" value={coverImage} />
+                <div>
+
+                  <input
+                    type="text"
+                    name="title"
+                    id="title"
+                    required
+                    placeholder="Title"
+                    className="p-2 border-b border-complementary  w-full bg-background focus:outline-none focus:border-b-2   text-lg placeholder-text-text3"
+                  />
+                </div>
+                <div>
+                  <textarea
+                    name="content"
+                    id="content"
+                    required
+                    className="p-2 border-b border-complementary  w-full bg-background focus:outline-none focus:border-b-2  min-h-56 max-h-56 h-56 text-xs placeholder-text-text3" placeholder="Add your content here"
+                  ></textarea>
+                </div>
+                {actionData?.error && (
+                  <div className="text-red-600 font-medium">{actionData.error}</div>
+                )}
+                <div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-accent hover:bg-complementary text-text px-6 py-3 rounded-full"
+                  >
+                    {isSubmitting ? 'Creating...' : 'Create Post'}
+                  </button>
+                </div>
+              </Form>
+
+
+            </div>
+          </>
+        )}
+      </div>
+
+    </section>
   );
 }
