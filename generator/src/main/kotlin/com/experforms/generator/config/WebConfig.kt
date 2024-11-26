@@ -8,7 +8,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class WebConfig : WebMvcConfigurer {
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**") // Match all endpoints
-            .allowedOrigins("*") // Allow all origins
+            .allowedOrigins("https://expertforms.vercel.app") // Allow Vercel origin
             .allowedMethods("GET", "POST", "PUT", "DELETE") // Allow specific HTTP methods
+            .allowedHeaders("*") // Allow all headers
+            .allowCredentials(true) // If cookies or credentials are required
     }
 }
