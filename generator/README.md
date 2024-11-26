@@ -31,7 +31,7 @@ A Spring Boot application integrated with MongoDB for managing posts. This proje
    
 
 
-# Build docker image
+# Build docker image -- Do this on every Deploy i.e git push
 
 # ./gradlew build
 
