@@ -45,8 +45,8 @@ export const action = async ({ request }: { request: Request }) => {
 
     console.log(`[LOG] Sending POST request to backend with data:`, postData);
 
-    // const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
-    const postResponse = await fetch('http://localhost:9000/api/posts', {
+    const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
+    // const postResponse = await fetch('http://localhost:9000/api/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postData),
@@ -88,8 +88,8 @@ export default function CreatePost() {
       } else {
         console.log(`[LOG] Fetching new cool name`);
         try {
-          // const response = await fetch('https://expertformsspringservice.onrender.com/api/cool-names/generate', { method: 'POST' });
-          const response = await fetch('http://localhost:9000/api/cool-names/generate', { method: 'POST' });
+          const response = await fetch('https://expertformsspringservice.onrender.com/api/cool-names/generate', { method: 'POST' });
+          // const response = await fetch('http://localhost:9000/api/cool-names/generate', { method: 'POST' });
           if (!response.ok) {
             throw new Error(`Failed to fetch cool name. Status: ${response.status}`);
           }
