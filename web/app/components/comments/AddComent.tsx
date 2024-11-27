@@ -1,23 +1,104 @@
+import { useFetcher } from "@remix-run/react";
+import { useState, useRef, useEffect } from "react";
 
-export default function AddComent() {
+// Success, Errors types def
+interface SuccessResponse {
+    success: true;
+    comment: any;
+}
+
+interface ErrorResponse {
+    success: false;
+    error: string;
+}
+
+type ApiResponse = SuccessResponse | ErrorResponse;
+
+export default function AddComment({
+    postId,
+    coolName,
+}: {
+    postId: string;
+    coolName: string;
+}) {
+    const fetcher = useFetcher();
+    const isSubmitting = fetcher.state === "submitting";
+    const formRef = useRef<HTMLFormElement>(null);
+    const [isSuccess, setIsSuccess] = useState(false);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    // Handle response from action
+    useEffect(() => {
+        if (fetcher.state === "idle" && fetcher.data) {
+            if (fetcher.data.success) {
+                formRef.current?.reset(); // Clear the form
+                setIsSuccess(true); // Show success message
+                setErrorMessage(null); // Clear any previous error
+                // Hide success message after a few seconds
+                setTimeout(() => setIsSuccess(false), 2000);
+            } else if (fetcher.data.error) {
+                setErrorMessage(fetcher.data.error); // Display error message
+                setIsSuccess(false);
+            }
+        }
+    }, [fetcher.state, fetcher.data]);
+
+    // Get Name and make Initials
+
+    const name = coolName;
+    const initials = name
+        ? name
+            .split(" ")
+            .map((n) => n[0].toUpperCase())
+            .join("")
+        : "A";
+
     return (
-        <div className="flex flex-row flex-wrap gap-2 items-center text-text">
+        <div>
+            <fetcher.Form
+                ref={formRef}
+                method="post"
+                className="flex flex-row flex-wrap gap-2 items-center text-text"
+            >
+                <div className="w-16 h-16 bg-tertiary rounded-full flex items-center justify-center shadow-lg text-text">
+                    <p className="text-xl">{initials}</p>
+                </div>
 
-            <div className="w-16 h-16 bg-tertiary rounded-full flex items-center justify-center shadow-lg text-text">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M17.06 13c-1.86 0-3.42 1.33-3.82 3.1c-.95-.41-1.82-.3-2.48-.01C10.35 14.31 8.79 13 6.94 13C4.77 13 3 14.79 3 17s1.77 4 3.94 4c2.06 0 3.74-1.62 3.9-3.68c.34-.24 1.23-.69 2.32.02c.18 2.05 1.84 3.66 3.9 3.66c2.17 0 3.94-1.79 3.94-4s-1.77-4-3.94-4M6.94 19.86c-1.56 0-2.81-1.28-2.81-2.86s1.26-2.86 2.81-2.86c1.56 0 2.81 1.28 2.81 2.86s-1.25 2.86-2.81 2.86m10.12 0c-1.56 0-2.81-1.28-2.81-2.86s1.25-2.86 2.81-2.86s2.82 1.28 2.82 2.86s-1.27 2.86-2.82 2.86M22 10.5H2V12h20zm-6.47-7.87c-.22-.49-.78-.75-1.31-.58L12 2.79l-2.23-.74l-.05-.01c-.53-.15-1.09.13-1.29.64L6 9h12l-2.44-6.32z" /></svg>
+                <input type="hidden" name="postId" value={postId} />
+                <input type="hidden" name="sender" value={coolName} />
+
+                <div className="flex flex-col">
+                    <textarea
+                        name="text"
+                        placeholder={`Add your comment, ${coolName}`} // Concatenates static text with coolName
+                        className="p-2 border-b border-accent w-full bg-background focus:outline-none focus:border-b-2 min-h-14 max-h-14 h-14 text-xs placeholder-text-text3"
+                        required
+                    ></textarea>
+                </div>
+
+                <div className="flex flex-row gap-2 items-center">
+                    <button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="bg-accent hover:bg-complementary p-4  rounded-full text-text text-sm"
+                    >
+                        {isSubmitting ? "Submitting..." : "Submit Comment"}
+                    </button>
+                </div>
+            </fetcher.Form>
+
+            {/* Show success message */}
+            {isSuccess && (
+                <div className="fixed bottom-2 left-2 bg-background shadow-2xl text-success p-4 ">
+                    <p className=" text-xs">Comment added successfully!</p>
+                </div>
+            )}
+
+            {/* Show error message */}
+
+            <div className="fixed bottom-2 left-2 bg-danger text-text p-2 ">
+                {errorMessage && <p className="text-xs">{errorMessage}</p>}
             </div>
-
-            <div className="flex flex-col">
-                <textarea className="p-2 border-b border-accent  w-full bg-background focus:outline-none focus:border-b-2  min-h-16 max-h-24 h-16 text-xs placeholder-text-text3" placeholder="Add your comment here"></textarea>
-            </div>
-
-            <div className="flex flex-row gap-2 items-center">
-                <button className="bg-accent hover:bg-complementary p-4  rounded-full text-text text-sm">
-                    Comment
-                </button>
-            </div>
-
-
         </div>
-    )
+    );
 }

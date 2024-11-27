@@ -4,20 +4,34 @@ import { useEffect, useState } from 'react';
 
 // Define the Post type
 interface Post {
-  post_id?: number;
-  user_id: string; // Matches backend model
+  id: string; // ObjectId represented as a string
+  userId: string; // User ID as a string
   title: string;
   content: string;
-  cover_image: string;
-  created_at?: string;
+  coverImage: string;
+  createdAt: string; // ISO string format for created timestamp
+  updatedAt: string; // ISO string format for updated timestamp
 }
+
+// Random iages for blog - replace cdn uploads
+const images: string[] = [
+  `/Gemini_Generated_Image_9m5dgc9m5dgc9m5d .jpeg`,
+  `/Gemini_Generated_Image_c51hsnc51hsnc51h.jpeg`,
+  `/Gemini_Generated_Image_d8f2n4d8f2n4d8f2.jpeg`,
+  `/Gemini_Generated_Image_g0leqeg0leqeg0le.jpeg`,
+  `/Gemini_Generated_Image_ik724uik724uik72.jpeg`,
+  `/Gemini_Generated_Image_svluyfsvluyfsvlu.jpeg`,
+  `/Gemini_Generated_Image_t03c8nt03c8nt03c.jpeg`,
+  `/Gemini_Generated_Image_tf72dwtf72dwtf72.jpeg`,
+  `Gemini_Generated_Image_tkiqw1tkiqw1tkiq.jpeg`,
+]
 
 // Helper to get a random image
 const getRandomImage = (): string => {
-  const randomIndex = Math.floor(Math.random() * 10) + 1;
-  console.log(`[LOG] Selected random image index: ${randomIndex}`);
-  return `/images/${randomIndex}.jpeg`; // Adjust the path if images are stored elsewhere
-};
+  const randomIndex = Math.floor(Math.random() * images.length);
+  return images[randomIndex];
+}
+
 
 // Server-side Action to handle form submission
 export const action = async ({ request }: { request: Request }) => {
@@ -45,8 +59,8 @@ export const action = async ({ request }: { request: Request }) => {
 
     console.log(`[LOG] Sending POST request to backend with data:`, postData);
 
-    const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
-      // const postResponse = await fetch('http://localhost:9000/api/posts', {
+    // const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
+    const postResponse = await fetch('http://localhost:9000/api/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postData),
@@ -127,6 +141,17 @@ export default function CreatePost() {
 
   const isSubmitting = navigation.state === 'submitting';
 
+
+  // Get initials
+  const name = coolName;
+  const initials = name
+    ? name
+        .split(" ")
+        .map((n) => n[0].toUpperCase())
+        .join("")
+    : "A";
+
+
   return (
 
     <section className='bg-primary'>
@@ -141,8 +166,16 @@ export default function CreatePost() {
               <h1 className="text-3xl font-bold mb-4">Create a New Post</h1>
               {coolName && (
                 <div className="mb-4">
+                  <div className="w-16 h-16 bg-tertiary rounded-full flex items-center justify-center shadow-lg text-text">
+                    <p className="text-xl">{initials}</p>
+                  </div>
+
+                 
                   <p className="text-lg">
-                    Welcome, <strong>{coolName}</strong>!
+                    Welcome,
+                    
+                    
+                     <strong>{coolName}</strong>!
                   </p>
                 </div>
               )}

@@ -19,8 +19,8 @@ class ErrorBoundary extends React.Component {
       const errorMessage = this.state.error?.message || "Something went wrong.";
 
       return (
-        <div className="w-full min-h-screen flex flex-col items-center justify-center p-8 ">
-          <img alt="Logo" src="/assets/logo2.png" className="h-20 w-20 mb-4" />
+        <div className="w-full min-h-screen flex flex-col items-center justify-center p-8  bg-primary text-text2">
+          <img alt="Logo" src="/logo-dark.png" className="h-20 w-20 mb-4" />
           <h1 className="text-xl text-red-500 mb-2">We encountered an error</h1>
           <p className="text-sm mb-4">{errorMessage}</p>
           <div className="flex gap-4">

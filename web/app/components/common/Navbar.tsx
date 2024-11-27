@@ -26,7 +26,7 @@ export default function Example() {
   return (
     <div>
       <Popover
-        className={`fixed top-0 left-0 right-0 h-14 flex justify-center items-center z-10 transition-all duration-300 transform ${showShadow
+        className={`fixed top-0 left-0 right-0 h-14 flex justify-center items-center z-20 transition-all duration-300 transform ${showShadow
           ? "shadow-sm shadow-black/20 bg-primary backdrop-blur-sm"
           : "shadow-none"
           }`}

@@ -13,4 +13,8 @@ class CoolNameController(private val service: CoolNameService) {
 
     @GetMapping
     fun getAllCoolNames(): List<CoolName> = service.getAllCoolNames()
+
+    @GetMapping("/{id}")
+    fun getCoolNameById(@PathVariable id: String): CoolName =
+        service.getCoolNameById(id)
 }
