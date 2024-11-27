@@ -60,7 +60,7 @@ export const action = async ({ request }: { request: Request }) => {
     console.log(`[LOG] Sending POST request to backend with data:`, postData);
 
     // const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
-    const postResponse = await fetch('http://localhost:9000/api/posts', {
+    const postResponse = await fetch('https://expertformsspringservice.onrender.com/api/posts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(postData),

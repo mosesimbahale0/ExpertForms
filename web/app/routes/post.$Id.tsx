@@ -57,10 +57,10 @@ export async function loader({ params }: { params: { Id: string } }) {
 
   try {
     const [postRes, commentsRes] = await Promise.all([
-      fetch(`http://localhost:9000/api/posts/${Id}`),
-      fetch(`http://localhost:9000/api/comments/${Id}`),
+      fetch(`https://expertformsspringservice.onrender.com/api/posts/${Id}`),
+      fetch(`https://expertformsspringservice.onrender.com/api/comments/${Id}`),
     ]);
-
+ 
     console.log("Responses fetched", { postRes: postRes.ok, commentsRes: commentsRes.ok });
 
     if (!postRes.ok || !commentsRes.ok) {
@@ -107,7 +107,7 @@ export async function action({ request }: { request: Request }) {
     };
 
     // Send the request to the backend
-    const response = await fetch(`http://localhost:9000/api/comments`, {
+    const response = await fetch(`https://expertformsspringservice.onrender.com/api/comments`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(commentPayload),
@@ -148,7 +148,7 @@ const SinglePost = () => {
         if (!post?.id) return; // Ensure post is defined
 
         try {
-          const response = await fetch(`http://localhost:9000/api/comments/${post.id}`);
+          const response = await fetch(`https://expertformsspringservice.onrender.com/api/comments/${post.id}`);
           if (!response.ok) {
             console.error("Error fetching updated comments:", response.statusText);
             return;
@@ -185,7 +185,7 @@ const SinglePost = () => {
 
       setAuthorLoading(true);
       try {
-        const response = await fetch(`http://localhost:9000/api/cool-names/${post.userId}`);
+        const response = await fetch(`https://expertformsspringservice.onrender.com/api/cool-names/${post.userId}`);
         console.log("Author response status:", response.status);
 
         if (!response.ok) throw new Error("Failed to fetch author");
@@ -247,7 +247,7 @@ const SinglePost = () => {
       } else {
         console.log(`[LOG] Fetching new cool name`);
         try {
-          const response = await fetch("http://localhost:9000/api/cool-names/generate", {
+          const response = await fetch("https://expertformsspringservice.onrender.com/api/cool-names/generate", {
             method: "POST",
             mode: "cors",
             headers: { "Content-Type": "application/json" },

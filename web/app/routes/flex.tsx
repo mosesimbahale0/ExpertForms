@@ -15,8 +15,8 @@ interface Post {
 
 export async function loader() {
   try {
-    const response = await fetch(" http://localhost:9000/api/posts");
-    // const response = await fetch("https://expertformsspringservice.onrender.com/api/posts");
+    // const response = await fetch(" http://localhost:9000/api/posts");
+    const response = await fetch("https://expertformsspringservice.onrender.com/api/posts");
     if (!response.ok) {
       return json(
         { error: `Failed to fetch posts: ${response.statusText}` },
