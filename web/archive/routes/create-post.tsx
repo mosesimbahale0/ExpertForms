@@ -15,16 +15,20 @@ interface Post {
 
 // Random iages for blog - replace cdn uploads
 const images: string[] = [
-  `/Gemini_Generated_Image_9m5dgc9m5dgc9m5d .jpeg`,
-  `/Gemini_Generated_Image_c51hsnc51hsnc51h.jpeg`,
-  `/Gemini_Generated_Image_d8f2n4d8f2n4d8f2.jpeg`,
+  `/Gemini_Generated_Image_1vm6kf1vm6kf1vm6.jpeg`,
+  `/Gemini_Generated_Image_5zvdm65zvdm65zvd.jpeg`,
+  `/Gemini_Generated_Image_9m5dgc9m5dgc9m5d.jpeg`,
+  `/Gemini_Generated_Image_a0unkea0unkea0un.jpeg`,
+  `/Gemini_Generated_Image_e1hrtqe1hrtqe1hr.jpeg`,
   `/Gemini_Generated_Image_g0leqeg0leqeg0le.jpeg`,
+  `/Gemini_Generated_Image_hlysxmhlysxmhlys.jpeg`,
   `/Gemini_Generated_Image_ik724uik724uik72.jpeg`,
-  `/Gemini_Generated_Image_svluyfsvluyfsvlu.jpeg`,
   `/Gemini_Generated_Image_t03c8nt03c8nt03c.jpeg`,
   `/Gemini_Generated_Image_tf72dwtf72dwtf72.jpeg`,
-  `Gemini_Generated_Image_tkiqw1tkiqw1tkiq.jpeg`,
-]
+  `/Gemini_Generated_Image_tkiqw1tkiqw1tkiq.jpeg`,
+  `/Gemini_Generated_Image_xi7swxi7swxi7swx.jpeg`,
+];
+
 
 // Helper to get a random image
 const getRandomImage = (): string => {

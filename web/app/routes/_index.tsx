@@ -11,13 +11,12 @@ export const meta: MetaFunction = () => {
   ];
 };
 
-
 //  Advantages
 const advantages = [
   {
     title: "Increased Efficiency",
     description:
-      "In today's rapidly evolving digital landscape, social media platforms and content providers face an ever-growing challenge: combating harmful content. From hate speech and violence to misinformation and cyberbullying, the proliferation of harmful content poses a significant threat to online safety and responsible communication.",
+      "Automating the moderation process with AI significantly increases efficiency.  Human moderators can only review a limited number of posts per day, while AI can process thousands, freeing up human moderators to focus on more complex or nuanced cases. This leads to faster response times and improved overall content management.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +86,7 @@ const advantages = [
   {
     title: "Improved Accuracy",
     description:
-      "In today's rapidly evolving digital landscape, social media platforms and content providers face an ever-growing challenge: combating harmful content. From hate speech and violence to misinformation and cyberbullying, the proliferation of harmful content poses a significant threat to online safety and responsible communication.",
+      "AI-powered moderation offers significantly improved accuracy compared to traditional methods.  Human moderators are prone to errors and inconsistencies, while AI can analyze vast amounts of data to identify subtle indicators of harmful content with greater precision and consistency.  This leads to a more effective reduction in harmful content while minimizing the risk of false positives.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -105,7 +104,7 @@ const advantages = [
   {
     title: "Reduced Cost",
     description:
-      "In today's rapidly evolving digital landscape, social media platforms and content providers face an ever-growing challenge: combating harmful content. From hate speech and violence to misinformation and cyberbullying, the proliferation of harmful content poses a significant threat to online safety and responsible communication.",
+      "AI-powered moderation significantly reduces costs associated with manual content review.  By automating the process, businesses can eliminate the need for large teams of human moderators, saving on salaries, training, and management overhead.  This cost-effectiveness makes AI-powered moderation a particularly attractive option for organizations with limited budgets or those seeking to scale their content moderation efforts efficiently.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -123,7 +122,7 @@ const advantages = [
   {
     title: "Improved Security",
     description:
-      "In today's rapidly evolving digital landscape, social media platforms and content providers face an ever-growing challenge: combating harmful content. From hate speech and violence to misinformation and cyberbullying, the proliferation of harmful content poses a significant threat to online safety and responsible communication.",
+      "AI-powered moderation enhances security by providing an additional layer of protection against malicious actors.  By automatically identifying and removing harmful content, AI reduces the risk of exposure to threats such as malware, phishing scams, and hate speech.  This proactive approach minimizes the potential for harm and helps create a safer online environment for all users.",
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -140,36 +139,27 @@ const advantages = [
   },
 ];
 
-
-
-
 export default function Index() {
   return (
     <>
       <section className="bg-primary text-text">
         <section className="flex flex-col min-h-screen items-center justify-center bg-primary py-20 container mx-auto ">
           <div className=" flex flex-col lg:flex-row  w-full">
-            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-16 lg:p-0 p-2 lg:pr-16 ">
+            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-20 lg:p-0 p-2 lg:pr-16 ">
               <div className=" w-full lg:max-w-4xl flex flex-col gap-6 justify-left items-start">
-                <p className=" text-sm text-left text-text2">
-                  Expert Forms: Build powerful content moderation systems with
-                  ease.
+                <p className="text-sm text-left text-text2">
+                  Expert Forms: Pioneering Online Safety Solutions.
                 </p>
                 <p
-                  className=" text-xl lg:text-4xl font-medium "
+                  className="text-xl lg:text-4xl font-medium"
                   style={{ fontFamily: "Space Grotesk" }}
                 >
-                  Building a Safer Online Community Through Proactive Moderation
+                  Redefining Content Moderation with On-Device AI.
                 </p>
-
-                <p className=" text-sm text-left text-text2">
-                  A content moderation system that implements a proactive
-                  content moderation system, inspired by expert systems. By
-                  leveraging Web AI and rule-based decision-making, it
-                  identifies and addresses inappropriate or harmful content in
-                  real time. This project aims to reduce reliance on manual
-                  moderation while ensuring ethical, scalable, and efficient
-                  solutions.
+                <p className="text-sm text-left text-text2">
+                  Harness the power of AI to proactively detect and eliminate
+                  harmful content, creating a safer and more engaging online
+                  environment.
                 </p>
               </div>
               <div className="flex lg:flex-row flex-col gap-10 ">
@@ -195,11 +185,11 @@ export default function Index() {
                 </Link>
               </div>
             </div>
-            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-end items-center gap-2  lg:p-0 p-2">
+            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-20 lg:p-0 p-2  ">
               <img
-                src="/Gemini_Generated_Image_tkiqw1tkiqw1tkiq.jpeg"
+                src="/Gemini_Generated_Image_5zvdm65zvdm65zvd.jpeg"
                 alt="hero image"
-                className=" w-full lg:w-4/5 h-auto"
+                className=" w-full  h-96 object-cover rounded-xl"
               />
             </div>
           </div>
@@ -207,7 +197,7 @@ export default function Index() {
 
         <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto ">
           <div className=" flex flex-col lg:flex-row  w-full justify-center items-center">
-            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-16 lg:p-0 p-2 lg:pr-16 ">
+            <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-20 lg:p-0 p-2 lg:pr-16 ">
               <div className=" w-full lg:max-w-4xl flex flex-col gap-6 justify-left items-start">
                 <p
                   className=" text-xl lg:text-3xl font-bold "
@@ -232,18 +222,22 @@ export default function Index() {
                   issue, a more proactive approach is needed.
                 </p>
                 <p className=" text-sm text-left text-text2">
-                  Smart forms emerge as a powerful tool to revolutionize content
-                  moderation. By leveraging the capabilities of natural language
-                  processing (NLP) and machine learning (ML), smart forms can
-                  proactively identify and flag potentially harmful content
-                  before it is published or shared.
+                  Expert forms offer a powerful and innovative solution. By
+                  leveraging the capabilities of on-device AI, Expert Forms
+                  empowers platforms to proactively identify and mitigate
+                  harmful content before it reaches users. This approach not
+                  only enhances online safety but also streamlines the
+                  moderation process, reducing costs and improving efficiency.
+                  Expert Forms is more than just a tool; it's a comprehensive
+                  solution designed to help build safer and more responsible
+                  online communities.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto ">
+        <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto py-16 ">
           <div className=" flex flex-col lg:flex-row  w-full justify-center items-center">
             <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-16 lg:p-0 p-2 lg:pr-16 ">
               <div className=" w-full lg:max-w-4xl flex flex-col gap-6 justify-left items-start">
@@ -279,7 +273,7 @@ export default function Index() {
           </div>
         </section>
 
-        <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto ">
+        {/* <section className="flex flex-col min-h-screen items-center justify-center bg-primary  container mx-auto ">
           <div className=" flex flex-col lg:flex-row  w-full justify-center items-center">
             <div className="  w-full h-full lg:w-1/2 flex flex-col justify-center items-start gap-16  lg:py-16 lg:p-0 p-2 lg:pr-16 ">
               <div className=" w-full lg:max-w-4xl flex flex-col gap-6 justify-left items-start">
@@ -293,8 +287,7 @@ export default function Index() {
               </div>
             </div>
           </div>
-        </section>
-
+        </section> */}
       </section>
     </>
   );

@@ -32,6 +32,7 @@ const config: Config = {
         success: "var(--success-color)",
         error: "var(--error-color)",
         warning: "var(--warning-color)",
+        danger: "var(--danger-color)",
         info: "var(--info-color)",
         accent: "var(--accent-color)",
         complementary: "var(--complementary-color)",
@@ -48,6 +49,7 @@ const config: Config = {
           "--success-color": "#01B331", // green-500
           "--error-color": "#DB0C00", // red-500
           "--warning-color": "#FFA000", // yellow-500
+          "--danger-color": "#C62828", // red-800
           "--info-color": "#FF7700", // blue-500
           "--accent-color": "#21C161", // indigo-500
           "--complementary-color": "#00FF66", // indigo-600
@@ -68,6 +70,7 @@ const config: Config = {
           "--success-color": "#10B981",
           "--error-color": "#EF4444",
           "--warning-color": "#E65100", // yellow-500
+          "--danger-color": "#C62828", // red-800
           "--info-color": "#3B82F6",
           "--accent-color": "#1DA855",
           "--complementary-color": "#105B2E",

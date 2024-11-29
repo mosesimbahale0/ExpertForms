@@ -3,7 +3,7 @@ import {
   checkCapabilities,
   createSession,
   promptModelStreaming,
-} from "../utils/aiApi";
+} from "../utils/webaiApi";
 
 export default function Index() {
   const [aiOutput, setAiOutput] = useState<string>("");

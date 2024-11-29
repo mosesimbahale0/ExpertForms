@@ -31,6 +31,8 @@ interface Comment {
   sender: string;
   text: string;
   replies: Reply[];
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface Reply {
@@ -60,7 +62,7 @@ export async function loader({ params }: { params: { Id: string } }) {
       fetch(`https://expertformsspringservice.onrender.com/api/posts/${Id}`),
       fetch(`https://expertformsspringservice.onrender.com/api/comments/${Id}`),
     ]);
- 
+
     console.log("Responses fetched", { postRes: postRes.ok, commentsRes: commentsRes.ok });
 
     if (!postRes.ok || !commentsRes.ok) {
@@ -165,7 +167,7 @@ const SinglePost = () => {
         }
       };
       fetchUpdatedComments();
-    }, 5000); // Poll every 5 seconds
+    }, 2000); // Poll every 2 seconds
 
     return () => clearInterval(intervalId);
   }, [post?.id, commentsList]);
@@ -304,7 +306,7 @@ const SinglePost = () => {
                 </div>
               </div>
 
-              <img src={post.coverImage} alt={post.title} className="w-full h-64 object-cover" />
+              <img src={post.coverImage} alt={post.coverImage} className="w-full h-64 object-cover" />
               <p className="text-sm">{post.content}</p>
             </div>
 
