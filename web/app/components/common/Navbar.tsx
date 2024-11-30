@@ -98,16 +98,14 @@ export default function Example() {
             ))}
           </PopoverGroup>
 
-          <a href="https://onedrive.live.com/personal/cc19bae930a8cf43/_layouts/15/Doc.aspx?sourcedoc=%7B6ac12657-5049-4bfa-b61e-347f97a7b61f%7D&action=default&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9jYzE5YmFlOTMwYThjZjQzL0VWY213V3BKVVBwTHRoNDBmNWVudGg4QkNrWFNDNmtwbnBXbVdEZEh2WjNWV1E&slrid=6fb066a1-7052-a000-9103-b5271abc77c2&originalPath=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9jYzE5YmFlOTMwYThjZjQzL0VWY213V3BKVVBwTHRoNDBmNWVudGg4QkNrWFNDNmtwbnBXbVdEZEh2WjNWV1E_cnRpbWU9QjZRQndMUUwzVWc&CID=9a32ee5e-a920-4a42-a8a7-7d6ff20fa28f&_SRM=0:G:35" target="_blank" className="hidden sm:flex  flex-row items-center gap-2 bg-secondary hover:bg-accent hover:text-text text-text2  px-4  justify-center h-14  text-sm ">
+          <a href="https://docs.google.com/document/d/1Y8cRid9Nf5QnWll2-3ceofHnXwI0oJQtD8Z-Yck9Ecg/edit?usp=sharing" target="_blank" className="hidden sm:flex  flex-row items-center gap-2 bg-primary hover:bg-accent hover:text-text text-text2  px-4  justify-center h-14  text-sm ">
             white Paper
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h10v10M7 17L17 7" /></svg>
-
           </a>
 
-          <a href="https://onedrive.live.com/personal/cc19bae930a8cf43/_layouts/15/Doc.aspx?sourcedoc=%7B6ac12657-5049-4bfa-b61e-347f97a7b61f%7D&action=default&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9jYzE5YmFlOTMwYThjZjQzL0VWY213V3BKVVBwTHRoNDBmNWVudGg4QkNrWFNDNmtwbnBXbVdEZEh2WjNWV1E&slrid=6fb066a1-7052-a000-9103-b5271abc77c2&originalPath=aHR0cHM6Ly8xZHJ2Lm1zL3cvYy9jYzE5YmFlOTMwYThjZjQzL0VWY213V3BKVVBwTHRoNDBmNWVudGg4QkNrWFNDNmtwbnBXbVdEZEh2WjNWV1E_cnRpbWU9QjZRQndMUUwzVWc&CID=9a32ee5e-a920-4a42-a8a7-7d6ff20fa28f&_SRM=0:G:35" target="_blank" className="hidden sm:flex  flex-row items-center gap-2 bg-secondary hover:bg-accent hover:text-text text-text2  px-4  justify-center h-14  text-sm ">
+          <a href="https://docs.google.com/document/d/1xEcGqIAVK_g3ZPOaEei7W_eMiAZoOumgzkCvNBgna2U/edit?usp=sharing" target="_blank" className="hidden sm:flex  flex-row items-center gap-2 bg-priamary hover:bg-accent hover:text-text text-text2  px-4  justify-center h-14  text-sm ">
             Research
             <svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h10v10M7 17L17 7" /></svg>
-
           </a>
 
 
