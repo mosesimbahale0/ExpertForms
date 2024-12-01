@@ -29,6 +29,8 @@
   This system combines customizable rules and Web AI to tackle real-world challenges in content moderation across various platforms.
   
   Read more in the [White Paper](https://1drv.ms/w/c/cc19bae930a8cf43/EVcmwWpJUPpLth40f5enth8BCkXSC6kpnpWmWDdHvZ3VWQ).
+
+  Watch intro [Youtube Video](https://youtu.be/A_z-4Sfip_E).
 </details>
 
 
