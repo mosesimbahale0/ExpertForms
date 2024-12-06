@@ -67,8 +67,10 @@ Use the API to evaluate and handle user-generated content dynamically.
 
 ```plaintext
 expertforms/
-├── package/     # Core NPM package for the content moderation system
-├── web/         # Showcase application demonstrating the implementation of Expert Forms on web platform
+├── packages/     # Core packages for the content moderation system
+├── examples/         # Showcase applications
+├── docs/
+├── changelogs/  
 ```
 
 </details>
