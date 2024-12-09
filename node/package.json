@@ -9,7 +9,7 @@
     "build": "rimraf ./dist && tsc",
     "lint": "eslint src --ext .ts",
     "compile": "tsc",
-    "start": "npm run compile && node --expose-gc ./dist/index.js"
+    "start": "npm run compile && node --max-old-space-size=2048 --expose-gc ./dist/index.js"
   },
   "keywords": [],
   "author": "MI",
