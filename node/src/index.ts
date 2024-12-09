@@ -312,7 +312,9 @@ console.log(`Memory Usage ++++++++++++++:
   Heap Used: ${(used.heapUsed / 1024 / 1024).toFixed(2)} MB
   External: ${(used.external / 1024 / 1024).toFixed(2)} MB`);
 
-const PORT = process.env.PORT || 4000;
+// const PORT = process.env.PORT || 4000;
+const PORT =  4000;
+
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
 
