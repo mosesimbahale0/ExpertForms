@@ -1,3 +1,46 @@
+// import express from "express";
+// import { ApolloServer } from "@apollo/server";
+// import { expressMiddleware } from "@apollo/server/express4";
+// import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+// import { createServer } from "http";
+// import cors from "cors";
+// import bodyParser from "body-parser";
+// import dotenv from "dotenv";
+
+// dotenv.config();
+
+// // import typeDefs from "./schemas";
+// import typeDefs from "./typeDefs.js";
+// import { resolvers } from "./resolvers"; // Same for ./resolvers
+
+// import { connectToDb } from "./utils/mongoDb";
+
+// const PORT = process.env.PORT || 4000;
+
+// (async () => {
+//   await connectToDb();
+
+//   const app = express();
+//   app.use(cors());
+//   app.use(bodyParser.json());
+
+//   const httpServer = createServer(app);
+
+//   const server = new ApolloServer({
+//     typeDefs,
+//     resolvers,
+//     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+//   });
+
+//   await server.start();
+
+//   app.use("/graphql", bodyParser.json(), expressMiddleware(server));
+
+//   httpServer.listen(PORT, () => {
+//     console.log(`Server running at http://localhost:${PORT}/graphql`);
+//   });
+// })();
+
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -234,8 +277,8 @@ async function connectToDb() {
     await mongoose.connect(
       mongoUri as string,
       {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
       } as ConnectOptions
     );
     console.log("🍃 Connected to MongoDB Atlas successfully");
@@ -258,6 +301,15 @@ connectToDb();
 //   console.log(colors.bgMagenta("🍃 Connected to MongoDB LOCAL successfully"));
 // });
 // process.on("warning", (e) => console.warn(e.stack));
+
+setInterval(() => {
+  const memoryUsage = process.memoryUsage();
+  console.log(`Memory Usage: 
+    RSS: ${(memoryUsage.rss / 1024 / 1024).toFixed(2)} MB
+    Heap Total: ${(memoryUsage.heapTotal / 1024 / 1024).toFixed(2)} MB
+    Heap Used: ${(memoryUsage.heapUsed / 1024 / 1024).toFixed(2)} MB
+    External: ${(memoryUsage.external / 1024 / 1024).toFixed(2)} MB`);
+}, 5000); // Log memory usage every 5 seconds
 
 const PORT = process.env.PORT || 4000;
 const schema = makeExecutableSchema({ typeDefs, resolvers });

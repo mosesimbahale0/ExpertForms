@@ -1,3 +1,34 @@
+// import express from "express";
+// import { ApolloServer } from "@apollo/server";
+// import { expressMiddleware } from "@apollo/server/express4";
+// import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
+// import { createServer } from "http";
+// import cors from "cors";
+// import bodyParser from "body-parser";
+// import dotenv from "dotenv";
+// dotenv.config();
+// // import typeDefs from "./schemas";
+// import typeDefs from "./typeDefs.js";
+// import { resolvers } from "./resolvers"; // Same for ./resolvers
+// import { connectToDb } from "./utils/mongoDb";
+// const PORT = process.env.PORT || 4000;
+// (async () => {
+//   await connectToDb();
+//   const app = express();
+//   app.use(cors());
+//   app.use(bodyParser.json());
+//   const httpServer = createServer(app);
+//   const server = new ApolloServer({
+//     typeDefs,
+//     resolvers,
+//     plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+//   });
+//   await server.start();
+//   app.use("/graphql", bodyParser.json(), expressMiddleware(server));
+//   httpServer.listen(PORT, () => {
+//     console.log(`Server running at http://localhost:${PORT}/graphql`);
+//   });
+// })();
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import { ApolloServerPluginDrainHttpServer } from "@apollo/server/plugin/drainHttpServer";
@@ -212,37 +243,19 @@ const resolvers = {
         },
     },
 };
-// const uri =
-//   "mongodb+srv://mosesimbahale0:NewDawn@2025@cluster0.zx9ga.mongodb.net/ExpertForms?retryWrites=true&w=majority&appName=Cluster0";
-// import pkg from "mongodb";
-// const { MongoClient } = pkg;
-// const client = new MongoClient(uri);
-// async function main() {
-//   try {
-//     await client.connect();
-//     console.log("Connected successfully to server");
-//     const db = client.db("myProject");
-//     const collection = db.collection("documents");
-//   } catch (err) {
-//     console.error(err.stack);
-//   } finally {
-//     await client.close();
-//   }
-// }
-// main().catch(console.dir);
 // // mongoDB
 // //----------------------------------------------------------------//
 async function connectToDb() {
     try {
         const mongoUri = process.env.MONGODB_URI;
         await mongoose.connect(mongoUri, {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
+        // useNewUrlParser: true,
+        // useUnifiedTopology: true,
         });
-        console.log('🍃 Connected to MongoDB Atlas successfully');
+        console.log("🍃 Connected to MongoDB Atlas successfully");
     }
     catch (error) {
-        console.error('Error connecting to MongoDB Atlas:', error.message);
+        console.error("Error connecting to MongoDB Atlas:", error.message);
         process.exit(1);
     }
 }
@@ -259,15 +272,22 @@ connectToDb();
 //   console.log(colors.bgMagenta("🍃 Connected to MongoDB LOCAL successfully"));
 // });
 // process.on("warning", (e) => console.warn(e.stack));
+setInterval(() => {
+    const memoryUsage = process.memoryUsage();
+    console.log(`Memory Usage: 
+    RSS: ${(memoryUsage.rss / 1024 / 1024).toFixed(2)} MB
+    Heap Total: ${(memoryUsage.heapTotal / 1024 / 1024).toFixed(2)} MB
+    Heap Used: ${(memoryUsage.heapUsed / 1024 / 1024).toFixed(2)} MB
+    External: ${(memoryUsage.external / 1024 / 1024).toFixed(2)} MB`);
+}, 5000); // Log memory usage every 5 seconds
 const PORT = process.env.PORT || 4000;
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 const app = express();
-// CORS setup
 app.use(cors({
     origin: "*", // Allows all origins
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Add any other methods you need
-    allowedHeaders: ["Content-Type", "Authorization"], // Add any other headers you need
-    credentials: true, // If you need to allow cookies or authentication headers
+    methods: ["GET", "POST"], // Most GraphQL servers only need these
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true, // Use true if authentication is required
 }));
 // Static file setup
 const __filename = fileURLToPath(import.meta.url);
